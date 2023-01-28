@@ -1,17 +1,22 @@
 import express from "express";
+import path from "path";
+import url from "url";
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
+const port = 8080;
 
-app.get("/", (req, res) => {
-  res.send("Home page");
-});
+// serve static content.
+app.use(express.static("public"));
 
 app.get("/hola-mundo", (req, res) => {
   res.send("Hola mundo");
 });
 
 app.get("/*", (req, res) => {
-  res.send("ERROR: 404 Not found");
+  res.sendFile(__dirname + "/public/404.html");
 });
 
-app.listen(8080);
+app.listen(port);
