@@ -2,12 +2,15 @@ import express from "express";
 import path from "path";
 import url from "url";
 import hbs from "hbs";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
 
 const settings = {
   name: "Lucas Serral",
