@@ -1,17 +1,17 @@
-import http from "http";
-import { v4 as uuidv4 } from "uuid";
+import express from "express";
 
-http
-  .createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "application/json" });
+const app = express();
 
-    const person = {
-      id: uuidv4(),
-      name: "JJ",
-      email: "lucasser21@gmail.com",
-    };
+app.get("/", (req, res) => {
+  res.send("Home page");
+});
 
-    res.write(JSON.stringify(person));
-    res.end();
-  })
-  .listen(8080);
+app.get("/hola-mundo", (req, res) => {
+  res.send("Hola mundo");
+});
+
+app.get("/*", (req, res) => {
+  res.send("ERROR: 404 Not found");
+});
+
+app.listen(8080);
