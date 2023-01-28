@@ -11,8 +11,12 @@ const port = 8080;
 // serve static content.
 app.use(express.static("public"));
 
-app.get("/hola-mundo", (req, res) => {
-  res.send("Hola mundo");
+app.get("/generic", (req, res) => {
+  res.sendFile(__dirname + "/public/generic.html");
+});
+
+app.get("/elements", (req, res) => {
+  res.sendFile(__dirname + "/public/elements.html");
 });
 
 app.get("/*", (req, res) => {
