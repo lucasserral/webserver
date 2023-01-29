@@ -10,7 +10,7 @@ const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 const settings = {
   name: "Lucas Serral",
@@ -36,4 +36,6 @@ app.get("/elements", (req, res) => {
   res.render("elements", settings);
 });
 
-app.listen(port);
+app.listen(port, () => {
+  console.log(`listening to port  ${port}`);
+});
